@@ -12,6 +12,27 @@ class API():
         return json.loads(res.text)
 
     def get_note_list(self):
+        """
+        Return:{
+            'createdAt': 123456789ABCD
+            'id': 'ABCDEFGHIJKLMNOPQRSTUV'
+            'lastChangeUser': {'biography': biography,
+                                'name': name,
+                                'photo': photo,
+                                'userPath': userPath},
+            'lastChangedAt': 123456789ABCD,
+            'permalink': None,
+            'publishType': 'view',
+            'publishedAt': None,
+            'readPermission': ['owner', 'signed_in', 'guest'],
+            'shortId': '123456789',
+            'tags': 您下的tag,
+            'teamPath': None,
+            'title': 'note 1',
+            'userPath': 'userPath',
+            'writePermission': ['owner', 'signed_in', 'guest']},
+
+        """
         url = "https://api.hackmd.io/v1/notes"
         res = send_requests("GET", url, headers=self.headers)
         return json.loads(res.text)
